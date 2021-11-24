@@ -1,0 +1,219 @@
+.Menu2 {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+}
+.Menu2 ul {
+    border-bottom: solid 6px goldenrod;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 85%;
+    margin: 0;
+    padding: 0;
+}
+.Menu2 ul li a {
+    color: white;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.Menu2 > li {
+    display: block;
+    float: left;
+}
+
+.Menu2 ul li a:hover {
+    background-color: rgb(0, 217, 255);
+    color: #153c4e;
+    font-weight: bold;
+}
+.Menu2 li ul{
+    display: none;
+    position: absolute;
+    min-width: 140px;
+}
+.Menu2 li:hover > ul {
+    background-color: black;
+    display: block;
+}
+.Menu2 li ul li {
+    display: block;
+    position: relative;
+}
+.Menu2 li ul li ul{
+    right: -140px;
+    top: 0px;
+    cursor: pointer;
+}
+.Menu2 li ul li ul button:hover {
+    background-color: green;
+}
+
+.Menu2 li ul li ul button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+    cursor: pointer;
+    padding: 10px;
+    min-width: 100%;
+}
+
+.divHome {
+    background-image: linear-gradient(-225deg, #7085b634 0%, #87a6d94f 0%, #ffffff3d 0%), url('https://images.hdqwalls.com/wallpapers/orange-lines-abstract-pattern-4k-hn.jpg');
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dogsContainer{
+    font-family: 'Amatic SC', cursive;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 100px;
+    padding: 0px 10px;
+    padding-left: 179px;
+}
+
+.dogDiv{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    border: 3px solid rgb(255, 220, 24);
+    border-radius: 15px;
+    padding: 15px 10px;
+    height: 450px;
+    margin: 10px 0;
+    width: 290px;
+    background-color: rgba(0, 0, 0, 0.596);
+}
+
+.dogDiv h3 {
+    font-family: monospace;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.dogDiv button{
+    font-family: 'Amatic SC', cursive;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+    margin: 5px;
+    background: #153c4e;
+    color: rgb(0, 217, 255);
+    height: 50px;
+    width: 70px;
+    box-shadow: transparent;
+    border-radius: 15px;
+    border: 1px solid rgb(6, 1, 85);
+}
+
+.dogDiv button:hover{
+    border: 3px solid red;
+    background-color: white;
+    color: red;
+}
+
+.dogDiv a{
+    text-decoration: none;
+    color: rgb(10, 0, 66);
+    font-weight: bold;
+}
+.linkCreate {
+    border: solid goldenrod; 
+    border-radius: 15px;
+    text-decoration: none;
+    padding: 2px;
+    background: transparent;
+    float: left;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 25px;
+    font-family:'Amatic SC', cursive;
+    color: rgb(0, 217, 255);
+    height: 23px;
+    width: 100px;
+    margin-top: 15px;
+}
+
+.Filters{
+    overflow: hidden;
+    background-color: black;
+    text-align: start;
+    padding-top: 20px;
+    height: 60px;
+    padding-left: 170px;
+}
+.desplegables {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.btnClean {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    width: min-content;
+    background-color: rgb(255, 0, 0);
+    font-weight: bold;
+    color: white;
+    border-style: hidden;
+    border-radius: 11px;
+    padding: 6px;
+}
+ select{
+    margin-right: 10px;
+    margin-left: 10px;
+	width: 170px;
+	cursor: pointer;
+  	padding: 7px 10px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #7b7b7b;
+	font-size: 11px;
+	color: #999;
+	font-family: 
+	'Quicksand', sans-serif;
+	background-color: rgb(255, 255, 255);
+    border: 2px solid goldenrod;  
+    border-radius: 12px;
+    transition: all 0.25s ease;
+}
+
+.Title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    text-shadow: rgb(0, 217, 255);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: goldenrod;
+}
+
+.btnHome{
+    background: goldenrod;
+    float: left;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 50px;
+    border-radius: 50%;
+}

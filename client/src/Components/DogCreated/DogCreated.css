@@ -1,0 +1,248 @@
+.createBreedDiv {
+    background-image: linear-gradient(-225deg, #7085b634 0%, #87a6d94f 0%, #ffffff52 0%), url('https://www.universityparkwayvet.com/storage/app/media/in_house_lab.jpg') ;
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divCreateFormTitle{
+    overflow: hidden;
+    height: 80px;
+    background: rgb(0, 3, 49);
+    margin-bottom: 25px;
+}
+
+.dogCreatedTitle{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    float: left;
+    font-size: 45px;
+    font-family:'Amatic SC', cursive;
+    color: rgb(0, 217, 255);
+    height: 30px;
+    width: 80%;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.btnHomeCreateForm{
+    margin-top:15px;
+    margin-left: 25px;
+    float:left;
+    background: goldenrod;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#form {
+    font-family:'Amatic SC', cursive;
+    border: 5px solid #ff6600;
+    border-radius: 25px;
+    width: 750px;
+    height: auto;
+    margin-top: 23px;
+    flex-direction: column;
+    background: rgb(0, 3, 49);
+    color: rgb(0, 217, 255);
+    margin-left: 55px;
+}
+#form legend{
+    font-size:23px;
+}
+#form label {
+    font-family:'Amatic SC', cursive;
+    justify-content: flex-start;
+    display: inline-block;
+    font-size: 19px;
+    /* color: rgb(0, 217, 255); */
+}
+#form input[type=text] {
+    border:1px solid #CCCCCC;
+}
+
+.divName {
+    margin-top:40px;
+}
+.labelName {
+    color: #ff6600;
+    text-align: start;
+    display: block;
+    width: 100%;
+    margin-left: 15px;
+}
+.inputName {
+    margin-left: 15px;
+    display: block;
+    width: 85%;
+    height: 21px;
+    border-radius: 4px;
+}
+
+.divHeight {
+    margin-top:40px;
+    text-align: start;
+}
+.labelHeight {
+    color: #ff6600;
+    width: 100%;
+    display: block;
+    text-align: start;
+    margin-left: 15px;
+}
+.labelHeightMin {
+    margin-left: 15px;
+}
+.labelHeightMax {
+    margin-left: 5px;
+}
+
+
+.divWeight {
+    margin-top:40px;
+    text-align: start;
+}
+.labelWeight {
+    color: #ff6600;
+    width: 100%;
+    display: block;
+    text-align: start;
+    margin-left: 15px;
+}
+.labelWeightMin {
+    margin-left: 15px;
+}
+.labelWeightMax {
+    margin-left: 5px;
+}
+
+
+.divLife {
+    margin-top:40px;
+    text-align: start;
+}
+.labelLife {
+    color: #ff6600;
+    width: 100%;
+    display: block;
+    text-align: start;
+    margin-left: 15px;
+}
+.labelLifeMin {
+    margin-left: 15px;
+}
+.labelLifeMax {
+    margin-left: 5px;
+}
+
+
+
+.divImage {
+    margin-top:40px;
+}
+.labelImg {
+    color: #ff6600;
+    text-align: start;
+    display: block;
+    width: 100%;
+    margin-left: 15px;
+}
+.imgCreate {
+    margin-left: 15px;
+    display: block;
+    width: 85%;
+    height: 21px;
+    border-radius: 4px;
+}
+
+
+
+.divTemp {
+    margin-top:40px;
+    margin-bottom:40px;
+    text-align: start;
+}
+.labelTemp {
+    color: #ff6600;
+    display: block;
+    margin-right: 5px;
+    margin-left: 15px;
+}
+.selectTemperament {
+    border-radius: 4px;
+    display: block;
+    margin-left: 15px;
+    width: 165px;
+}
+
+
+.inputNumbers {
+    width: 35px;
+    height: 21px;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+hr {
+    width: 93%;
+    border: 0;
+    border-top: 2px  solid #ff6600;
+}
+
+p {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-left: 15px;
+}
+
+.tempList {
+    margin-top: 8px;
+    margin-bottom: 85px;
+    display: inline-block;
+}
+.tempItem {
+    margin-right: 15px;
+    margin-bottom: 10px;
+    font-family:'Amatic SC', cursive;
+    color: rgb(0, 217, 255);
+    font-size: 19px;
+}
+
+.buttonX {
+    height: 35px;
+    width: 35px;
+    border-radius: 7px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+/* .btnCreate {
+    margin-top: 45px;
+    display: block;
+} */
+.btnCreate{
+    margin-top: 85px;
+    /* display: block; */
+    cursor: pointer;
+    font-size: 18px;
+    background: #153c4e;
+    color: rgb(0, 217, 255);
+    height: 60px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #153c4e;
+    margin-top: -10%;
+}
+
+.btnCreate:hover{
+    font-size: 23px;
+    border: 2px solid #153c4e;
+    background-color: rgb(21, 255, 0);
+    color:white;
+}

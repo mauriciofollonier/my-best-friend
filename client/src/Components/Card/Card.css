@@ -1,0 +1,11 @@
+.dogImg{
+    margin: 5px 0;
+    border-radius: 10px;
+    width: auto;
+    max-width: 90%;
+    max-height: 180px;
+  
+} 
+ul{
+    margin-bottom: 10px;
+}
