@@ -90,9 +90,9 @@ function handleOrderByWeight(e){
               <button className='btnClean'  onClick={(e) => handleClick(e)} >CLEAN FILTERS</button>
 
               <select 
-                    onChange={e => handleOrderByName(e)}>{/* Menu desplegable con opciones */}
+                 defaultValue={'DEFAULT'} onChange={e => handleOrderByName(e)}>{/* Menu desplegable con opciones */}
                     {/* Filtro Ascendente-Descendente */}
-                    <option disabled selected>Order By Name</option>
+                    <option value="DEFAULT" disabled>Order By Name</option>
                     <option value='asc'>A - Z</option>{/* Ascendente */}
                     <option value='desc'>Z - A</option>{/* Descendente */}
                     {/* Que necesito para mandar las cosas por 'payload'? Un value en <option>
@@ -103,24 +103,24 @@ function handleOrderByWeight(e){
 
               </select>
 
-              <select onChange={e => handleOrderByWeight(e)}>
-                    <option disabled selected>Order By Weight</option>
+              <select defaultValue={'DEFAULT'} onChange={e => handleOrderByWeight(e)}>
+                    <option value="DEFAULT" disabled>Order By Weight</option>
                     <option value='+weight'>Lightest</option>{/* Mayor Peso */}
                     <option value='-weight'>Heaviest</option>{/* Menor Peso */}
               </select>
 
-              <select onChange={(e) => handleSelect(e)}  >
-              <option disabled selected>Filter By Temperament</option>
-                    {temperamentsHome.map((temp) => (
+              <select defaultValue={'DEFAULT'} onChange={(e) => handleSelect(e)}  >
+              <option value="DEFAULT" disabled>Filter By Temperament</option>
+                    {temperamentsHome.map((temp, key) => (
                         
-                        <option value={temp.name} >
+                        <option value={temp.name} key={key}>
                             {temp.name}
                         </option>
                     ))}
              </select>
-              <select onChange={e => handleFilterCreated(e)}>
+              <select defaultValue={'DEFAULT'} onChange={e => handleFilterCreated(e)}>
                   {/* Filtro por Existente o Creado por Nosotros */}
-                  <option disabled selected>Filter Created</option>
+                  <option value="DEFAULT" disabled>Filter Created</option>
                   <option value='All'>All</option>
                   <option value='Created'>Created</option>
                   <option value='Existents'>Existing</option>

@@ -4,7 +4,7 @@ export function getDogs() {
     return async function (dispatch) {
     // Le pasamos la ruta del back para que me traiga todos los dogs.
     
-        var json = await axios.get('http://localhost:3001/dogs');
+        var json = await axios.get('/dogs');
         
         return dispatch({
             type: 'GET_DOGS',
@@ -16,7 +16,7 @@ export function getDogs() {
 export function getTemperaments () {
     return async function (dispatch) {
     // Le pasamos la ruta del back para que me traiga todos los dogs.
-        var json = await axios.get('http://localhost:3001/temperaments',{
+        var json = await axios.get('/temperaments',{
 
         });
         return dispatch({
@@ -29,7 +29,7 @@ export function getTemperaments () {
 export function postDog (payload) {
     return async function (dispatch) {
     // Le pasamos la ruta del back para que me traiga todos los dogs.
-        var response = await axios.post('http://localhost:3001/dog', payload);
+        var response = await axios.post('/dog', payload);
         console.log(response)
         return response;
     }
@@ -72,7 +72,7 @@ export function orderByWeight (payload) {
 export function getDogDetail(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/dogs/${id}`)
+            var json = await axios.get(`/dogs/${id}`)
             return dispatch({
                 type: 'GET_DOG_DETAIL',
                 payload: json.data
@@ -89,7 +89,7 @@ export function getDogName (name) {
 // Le pego la ruta y le digo ejecutamela con lo que te estoy pasando como "name"
    return async function (dispatch) {
         try {
-            var json = await axios.get("http://localhost:3001/dogs?name="+name);
+            var json = await axios.get("/dogs?name="+name);
             return dispatch ({
                 type: 'GET_DOG_BY_NAME',
                 payload: json.data // La respuesta de la promesa guardada en "json"

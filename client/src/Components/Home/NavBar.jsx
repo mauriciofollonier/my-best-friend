@@ -10,7 +10,7 @@ return (
                 <ul>
                     <li><Link to='/home'>HOME</Link></li>
                     <li><Link to='/newDog'>CREATE</Link></li>
-                    <li><Link>ABOUT</Link></li>
+                    <li><Link to="">ABOUT</Link></li>
                 </ul>
             </div>
  )

@@ -7,20 +7,20 @@ export default function Card ({id , name, image, temperament, temperaments, weig
 
   
   return (
-      <div key={id}>
+      <div>
           <h3>{name}</h3>
 
           <img className='dogImg' src={image} alt="img not found"/>
           <hr />
           <h4>{ temperament ? 
           <ul>
-          {temperament.map(temp => (
-            <li>{temp}</li>
+          {temperament.map((temp, id) => (
+            <li key={id}>{temp}</li>
           ))} 
           </ul> :
           <ul>
-          {temperaments?.map(t =>
-            <li>{t.name}</li>
+          {temperaments?.map((t, id) =>
+            <li key={id}>{t.name}</li>
           )} 
           </ul>
            }
