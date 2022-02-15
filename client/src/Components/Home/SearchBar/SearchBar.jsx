@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getDogName } from '../../../Actions/index';
+import { BsSearch } from 'react-icons/bs';
 import './SearchBar.css';
 
 export default  function SearchBar () {
@@ -31,11 +32,19 @@ export default  function SearchBar () {
             type='text'
             placeholder='Breed Name...'
             />
-            <button 
+            <button
+             className="btnSearchBar"
+             type='submit'
+             onClick={(e) => handleSubmit(e) }>
+                <BsSearch/>
+            </button>
+            
+            {/* <button 
             className="btnSearchBar"
             type='submit'
             onClick={(e) => handleSubmit(e) }
-            >Search</button>
+            >Search</button> */}
+            
         </div>
     )
 }

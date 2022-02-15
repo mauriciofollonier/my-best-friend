@@ -74,20 +74,15 @@ function handleOrderByWeight(e){
     setCurrentPage(1);
     setOrder(`Ordened ${e.target.value}`)
     }
-
+   
  return (
      <div className='divHome'>
             <NavBar/>
 
             <div className="Filters">{/* Filtros */}
 
-
             {/* Boton para volver a cargar todos los personajes. Para que se ejecute le 
               tengo que pasar una funcion(handleClick)*/}
-
-              <div className="desplegables">
-
-              <button className='btnClean'  onClick={(e) => handleClick(e)} >CLEAN FILTERS</button>
 
               <select 
                  defaultValue={'DEFAULT'} onChange={e => handleOrderByName(e)}>{/* Menu desplegable con opciones */}
@@ -118,6 +113,7 @@ function handleOrderByWeight(e){
                         </option>
                     ))}
              </select>
+
               <select defaultValue={'DEFAULT'} onChange={e => handleFilterCreated(e)}>
                   {/* Filtro por Existente o Creado por Nosotros */}
                   <option value="DEFAULT" disabled>Filter Created</option>
@@ -125,9 +121,8 @@ function handleOrderByWeight(e){
                   <option value='Created'>Created</option>
                   <option value='Existents'>Existing</option>
               </select>
-              <SearchBar/>
-              </div>
-               {/* <Link to='/newDog' className="linkCreate">Create Dog</Link> */}
+
+              <button className='btnClean'  onClick={(e) => handleClick(e)} >X</button>
             </div>
               
              {/*    ******** Paginado *******    */}
@@ -154,6 +149,7 @@ function handleOrderByWeight(e){
              pagination = {pagination}
              />
             </div>
+            <div className='Footer'></div>
      </div>
  )
 }
