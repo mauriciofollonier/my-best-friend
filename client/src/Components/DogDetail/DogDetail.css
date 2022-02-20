@@ -25,7 +25,7 @@
 
 .detailH2{
  font-size: 45px;
- text-shadow: 5px 5px 5px goldenrod;
+ text-shadow: 5px 5px 5px var(--color-naranja-dorado);
  color:rgb(255, 255, 255);
  margin-top: 20px;
  margin-bottom: 25px;
@@ -44,9 +44,3 @@
     max-height:'400px';
     margin-bottom: 20px;
 }
-
-/* .btnHomeDetail{
-    background: goldenrod;
-    cursor: pointer;
-    border-radius: 50%;
-} */

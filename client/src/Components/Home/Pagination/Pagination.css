@@ -10,22 +10,15 @@
     height: 50px;
     width: 45px;
     background: rgb(10, 0, 66);
-    color: rgb(0, 217, 255);
+    color: var(--color-celeste);
     font-weight: bold;
     border-radius: 3px;
-    border: double goldenrod;
+    border: double var(--color-naranja-dorado);
 }
 
 .pagination:hover{
     cursor: pointer;
     filter: brightness(2);
-    /* margin: 2px;
-    height: 33px;
-    width: 33px;
-    background:  rgb(10, 0, 66);
-    font-weight: bold;
-    border-radius: 40px;
-    border: solid goldenrod; */
 }
 
 .pagination:active {

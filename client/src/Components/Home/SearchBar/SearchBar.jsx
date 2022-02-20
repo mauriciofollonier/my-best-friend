@@ -36,7 +36,7 @@ export default  function SearchBar () {
              className="btnSearchBar"
              type='submit'
              onClick={(e) => handleSubmit(e) }>
-                <BsSearch/>
+            <BsSearch/>
             </button>
             
             {/* <button 

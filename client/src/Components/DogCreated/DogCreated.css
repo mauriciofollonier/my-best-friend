@@ -1,18 +1,38 @@
 .createBreedDiv {
+    display: grid;
+    grid-template-rows: 100px 1fr 80px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header"
+                         "main"
+                         "footer";
     background-image: linear-gradient(-225deg, #7085b634 0%, #87a6d94f 0%, #ffffff52 0%), url('https://www.universityparkwayvet.com/storage/app/media/in_house_lab.jpg') ;
     height: 100%;
     width: 100%;
     background-position: center center;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-.divCreateFormTitle{
+.divCreateFormTitle{  
     overflow: hidden;
     height: 80px;
     background: rgb(0, 3, 49);
     margin-bottom: 25px;
+}
+.divForm {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.MenuCreate {
+    grid-area: header;
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding: 12px;
 }
 
 .dogCreatedTitle{
@@ -23,32 +43,30 @@
     float: left;
     font-size: 45px;
     font-family:'Amatic SC', cursive;
-    color: rgb(0, 217, 255);
+    color: var(--color-celeste);
     height: 30px;
     width: 80%;
     margin-top: 10px;
     margin-left: 70px;
 }
-
 .btnHomeCreateForm{
     margin-top:15px;
     margin-left: 25px;
     float:left;
-    background: goldenrod;
+    background: var(--color-naranja-dorado);
     cursor: pointer;
     border-radius: 50%;
 }
-
 #form {
     font-family:'Amatic SC', cursive;
-    border: 5px solid #ff6600;
-    border-radius: 25px;
+    border: 5px solid var(--color-naranja-intenso);
+    border-radius: 8px;
     width: 750px;
     height: auto;
     margin-top: 23px;
     flex-direction: column;
-    background: rgb(0, 3, 49);
-    color: rgb(0, 217, 255);
+    background: rgba(0, 3, 49, 0.644);
+    color: var(--color-celeste);
     margin-left: 55px;
 }
 #form legend{
@@ -59,17 +77,12 @@
     justify-content: flex-start;
     display: inline-block;
     font-size: 19px;
-    /* color: rgb(0, 217, 255); */
 }
-#form input[type=text] {
-    border:1px solid #CCCCCC;
-}
-
 .divName {
     margin-top:40px;
 }
 .labelName {
-    color: #ff6600;
+    color: var(--color-naranja-intenso);;
     text-align: start;
     display: block;
     width: 100%;
@@ -88,7 +101,7 @@
     text-align: start;
 }
 .labelHeight {
-    color: #ff6600;
+    color: var(--color-naranja-intenso);
     width: 100%;
     display: block;
     text-align: start;
@@ -100,14 +113,12 @@
 .labelHeightMax {
     margin-left: 5px;
 }
-
-
 .divWeight {
     margin-top:40px;
     text-align: start;
 }
 .labelWeight {
-    color: #ff6600;
+    color: var(--color-naranja-intenso);
     width: 100%;
     display: block;
     text-align: start;
@@ -119,14 +130,12 @@
 .labelWeightMax {
     margin-left: 5px;
 }
-
-
 .divLife {
     margin-top:40px;
     text-align: start;
 }
 .labelLife {
-    color: #ff6600;
+    color: var(--color-naranja-intenso);
     width: 100%;
     display: block;
     text-align: start;
@@ -138,14 +147,11 @@
 .labelLifeMax {
     margin-left: 5px;
 }
-
-
-
 .divImage {
     margin-top:40px;
 }
 .labelImg {
-    color: #ff6600;
+    color: var(--color-naranja-intenso);
     text-align: start;
     display: block;
     width: 100%;
@@ -158,16 +164,13 @@
     height: 21px;
     border-radius: 4px;
 }
-
-
-
 .divTemp {
     margin-top:40px;
     margin-bottom:40px;
     text-align: start;
 }
 .labelTemp {
-    color: #ff6600;
+    color: var(--color-naranja-intenso);
     display: block;
     margin-right: 5px;
     margin-left: 15px;
@@ -178,22 +181,19 @@
     margin-left: 15px;
     width: 165px;
 }
-
-
 .inputNumbers {
-    width: 35px;
+    width: 45px;
     height: 21px;
     border-radius: 4px;
     margin-left: 5px;
 }
-
 hr {
     width: 93%;
     border: 0;
-    border-top: 2px  solid #ff6600;
+    border-top: 2px  solid var(--color-naranja-intenso);
 }
 
-p {
+#form p {
     color: red;
     font-size: 14px;
     margin-top: 8px;
@@ -209,7 +209,7 @@ p {
     margin-right: 15px;
     margin-bottom: 10px;
     font-family:'Amatic SC', cursive;
-    color: rgb(0, 217, 255);
+    color: var(--color-celeste);
     font-size: 19px;
 }
 
@@ -222,27 +222,55 @@ p {
     font-weight: bold;
 }
 
-/* .btnCreate {
-    margin-top: 45px;
-    display: block;
-} */
 .btnCreate{
     margin-top: 85px;
-    /* display: block; */
     cursor: pointer;
     font-size: 18px;
     background: #153c4e;
-    color: rgb(0, 217, 255);
+    color: var(--color-celeste);
     height: 60px;
-    width: 100%;
-    border-radius: 12px;
+    width: 99.5%;
+    border-radius: 8px;
     border: 1px solid #153c4e;
     margin-top: -10%;
 }
-
 .btnCreate:hover{
-    font-size: 23px;
-    border: 2px solid #153c4e;
-    background-color: rgb(21, 255, 0);
+    background-color: rgb(33, 145, 23);
     color:white;
+}
+.danger {
+    margin-left: 15px;
+    display: block;
+    width: 85%;
+    height: 21px;
+    border-radius: 4px;
+    border: red solid 2px;
+}
+.danger2 {
+    width: 45px;
+    height: 21px;
+    border-radius: 2px;
+    margin-left: 5px;
+    border: red solid 2px;
+}
+.Footer {
+    background-color: black;
+    grid-area: footer;
+}
+.Footer p {
+    flex-wrap: wrap;
+    color: white;
+    font-size: 1em;
+}
+.Footer a {
+    height: max-content;
+    width: max-content;
+    color: white;
+    text-decoration: none;
+}
+.footerIcon {
+    color: white;
+    margin: 5px;
+    height: 35px;
+    width: 35px;
 }

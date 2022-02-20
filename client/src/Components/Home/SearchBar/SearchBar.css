@@ -9,7 +9,7 @@
     border-style: none;
     font-family: 'Quicksand', sans-serif;
     background-color: rgb(255, 255, 255);
-    border: 2px solid goldenrod;
+    border: 2px solid gvar(--color-naranja-dorado);
     border-radius: 2px;
     height: 22px;
     padding: 7px 10px;

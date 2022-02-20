@@ -8,9 +8,10 @@ import { getDogs,
          orderByName,
          orderByWeight } from '../../Actions/index';
 import { Link } from 'react-router-dom';
+import { VscGithub } from "react-icons/vsc";
+import { SiLinkedin } from "react-icons/si";
 import Card from '../Card/Card';
 import Pagination from './Pagination/Pagination';
-import SearchBar from './SearchBar/SearchBar';
 import NavBar from '../Home/NavBar';
 import './Home.css';
 
@@ -149,7 +150,16 @@ function handleOrderByWeight(e){
              pagination = {pagination}
              />
             </div>
-            <div className='Footer'></div>
+            <div className='Footer'>
+                <p>Developed by Mauricio Follonier </p>
+                <a href="https://github.com/mauriciofollonier/">
+                    <VscGithub className='footerIcon'/>
+                </a>
+
+                 <a href="https://www.linkedin.com/in/mauricio-damian-follonier/">
+                    <SiLinkedin className='footerIcon'/>
+                </a>
+            </div>
      </div>
  )
 }

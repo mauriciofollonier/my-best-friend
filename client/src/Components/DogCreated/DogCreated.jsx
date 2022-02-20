@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postDog, getTemperaments } from '../../Actions/index';
 import { Link, useHistory } from 'react-router-dom';
+import { VscGithub } from "react-icons/vsc";
+import { SiLinkedin } from "react-icons/si";
 import NavBar from '../Home/NavBar';
 import './DogCreated.css';
 
@@ -10,6 +12,8 @@ function validate(input) {
     let errors = {};
     if (!input.name) {
         errors.name = 'Name is required';
+    } else if (/\d/.test(input.name)) {
+        errors.name = "Numbers are not allowed";
     } else if (!input.height_min) {
         errors.height_min = 'Height Min is required';
     } else if (!input.height_max) {
@@ -102,214 +106,105 @@ export default function DogCreated() {
 
     return (
         <div className='createBreedDiv'>
-            {/* <div className="divCreateFormTitle">
-
-                <Link to={'/home'}>
-                    <button className="btnHomeCreateForm">
-                        <img src="https://images.squarespace-cdn.com/content/v1/5c7e5d208d97406156f3e83d/1557928940983-FCU91IK7IX3YAYM5AWPW/dog-sleeping.png" width="55px" height="45px" alt="x" />
-                    </button>
-                </Link>
-
-                <h1 className="dogCreatedTitle">Create a new Dog</h1>
-
-            </div> */}
-            <NavBar/>
-
-            <div>
+            {/* <NavBar/> */}
+            <div className="MenuCreate">
+                    <a className="Title" href='/home'>apiDogs</a>
+                </div>
+            <div className="divForm">         
                 <form onSubmit={e => handleSubmit(e)}>
-                    {/* <div>
-                    <label className="labelName">Name :</label>
-                        <input
-                        type='text'
-                        value= {input.name}
-                        name='name'
-                        onChange={e => handleChange(e)}
-                        />
-                        {errors.name && (
-                            <p className="danger">{errors.name}</p>
-                        )}
-                </div>
-                <div>
-                    <label className="labelHeight">Height :</label>
-                        <label className="labelHeightMin">Min :</label>
-                            <input className="inputNumbers"
-                                    type='text'
-                                    value= {input.height_min}
-                                    name='height_min'
-                                    onChange={e => handleChange(e)}>
-                            </input>
-                                    
-                        <label className="labelHeightMax">    Max :</label>
-                        <input className="inputNumbers"
-                                    type='text'
-                                    value= {input.height_max}
-                                    name='height_max'
-                                    onChange={e => handleChange(e)}>
-                        </input>
-                                    
-                        {errors.height_min && (
-                            <p className="danger">{errors.height_min}</p>
-                        )}
-                        {errors.height_max && (
-                                <p className='danger'>{errors.height_max}</p>
-                        )}
-                </div>
-                <div>
-                    <label className="labelWeight">Weight :</label>
-                        <label className="labelWeightMin">Min :</label>
-                            <input className="inputNumbers"
-                                    type='text'
-                                    value= {input.weight_min}
-                                    name='weight_min'
-                                    onChange={e => handleChange(e)}>                               
-                            </input>
-                        <label className="labelWeightMax">Max :</label>
-                            <input className="inputNumbers"
-                                    type='text'
-                                    value= {input.weight_max}
-                                    name='weight_max'
-                                    onChange={e => handleChange(e)}>
-                            </input>
-                                                                 
-                        {errors.weight_min && (
-                            <p className="danger">{errors.weight_min}</p>
-                        )}
-                        {errors.weight_max && (
-                            <p className="danger">{errors.weight_max}</p>
-                        )}
-                </div>
-                <div className="divLife">
-                    <label className="labelLife">Life expectancy :</label>
-                        <label className="labelLifeMin">Min :</label>
-                            <input className="inputNumbers"
-                                    type='text'
-                                    value= {input.life_span_min}
-                                    name='life_span_min'
-                                    onChange={e => handleChange(e)}>
-                                
-                            </input>
-                                   
-                        <label className="labelLifeMax">    Max :</label>
-                            <input className="inputNumbers"
-                                    type='text'
-                                    value= {input.life_span_max}
-                                    name='life_span_max'
-                                    onChange={e => handleChange(e)}>
-                            </input>
-                                   
-                        
-                        {errors.life_span_min && (
-                            <p className="danger">{errors.life_span_min}</p>
-                        )}
-                        {errors.life_span_max && (
-                            <p className="danger">{errors.life_span_max}</p>
-                        )}
-                </div>
-                <div>
-                    <label className="labelImg">Image :</label>
-                        <input
-                        className="imgCreate"
-                        type='text'
-                        value= {input.image}
-                        name='image'
-                        onChange={e => handleChange(e)}
-                        />                      
-                </div>
-                <label className="labelTemp">Temperament :</label>
-                <select onChange={(e) => handleSelect(e)} className="selectTemperament">
-                <option disabled selected>Choose Temperament</option>
-                    {temperaments.map((temp) => (
-                        <option value={temp.name} key={temp.id}>{temp.name}</option>
-                    ))}
-                </select>
-                <ul><li>{input.temperament.map((o)=> o + " ,")}</li></ul>  
-                 <button type='submit'>Create!</button> */}
                     <fieldset id="form">
                         <legend>Breed</legend>
                         <div className='divName'>
                                 <label className='labelName'>Name</label>
                                 <hr/>
                                 <input
-                                    className="inputName"
-                                    type='text'
-                                    value={input.name}
-                                    name='name'
-                                    onChange={e => handleChange(e)}
+                                className={errors.name ? "danger" : "inputName"}
+                                type='text'
+                                value={input.name}
+                                name='name'
+                                onChange={e => handleChange(e)}
                                 />
                                 {errors.name && (
-                                    <p className="danger">{errors.name}</p>
+                                    <p>{errors.name}</p>
                                 )}
                         </div>
                         <div className='divHeight'>
                                 <label className="labelHeight">Height</label>
                                 <hr/>
                                 <label className="labelHeightMin">Min</label>
-                                <input className="inputNumbers"
-                                type='text'
+                                <input 
+                                className={errors.height_min ? "danger2" : "inputNumbers"}
+                                type='number'
+                                min="1"
                                 value= {input.height_min}
                                 name='height_min'
                                 onChange={e => handleChange(e)}>
                                 </input>
                                 <label className="labelHeightMax">Max</label>
-                                <input className="inputNumbers"
-                                    type='text'
-                                    value={input.height_max}
-                                    name='height_max'
-                                    onChange={e => handleChange(e)}>
+                                <input className={errors.height_max ? "danger2" : "inputNumbers"}
+                                type='number'
+                                min="1"
+                                value={input.height_max}
+                                name='height_max'
+                                onChange={e => handleChange(e)}>
                                 </input>
                                 {errors.height_min && (
-                                    <p className="danger">{errors.height_min}</p>
+                                    <p>{errors.height_min}</p>
                                 )}
                                 {errors.height_max && (
-                                    <p className='danger'>{errors.height_max}</p>
+                                    <p>{errors.height_max}</p>
                                 )}
                         </div>
                         <div className='divWeight'>
                                 <label className="labelWeight">Weight</label>
                                 <hr/>
                                 <label className="labelWeightMin">Min</label>
-                                <input className="inputNumbers"
-                                type='text'
+                                <input className={errors.weight_min ? "danger2" : "inputNumbers"}
+                                type='number'
+                                min="1"
                                 value={input.weight_min}
                                 name='weight_min'
                                 onChange={e => handleChange(e)}>
                                 </input>
                                 <label className="labelWeightMax">Max</label>
-                                <input className="inputNumbers"
-                                type='text'
+                                <input className={errors.weight_max ? "danger2" : "inputNumbers"}
+                                type='number'
+                                min="1"
                                 value={input.weight_max}
                                 name='weight_max'
                                 onChange={e => handleChange(e)}>
                                 </input>
                                 {errors.weight_min && (
-                                    <p className="danger">{errors.weight_min}</p>
+                                    <p>{errors.weight_min}</p>
                                 )}
                                 {errors.weight_max && (
-                                    <p className="danger">{errors.weight_max}</p>
+                                    <p>{errors.weight_max}</p>
                                 )}
                         </div>
                         <div className='divLife'>
                                 <label className="labelLife">Life expectancy</label>
                                 <hr/>
                                 <label className="labelLifeMin">Min</label>
-                                <input className="inputNumbers"
-                                type='text'
+                                <input className={errors.life_span_min ? "danger2" : "inputNumbers"}
+                                type='number'
+                                min="1"
                                 value= {input.life_span_min}
                                 name='life_span_min'
                                 onChange={e => handleChange(e)}>
                                 </input>   
                                 <label className="labelLifeMax">Max</label>
-                                <input className="inputNumbers"
-                                type='text'
+                                <input className={errors.life_span_max ? "danger2" : "inputNumbers"}
+                                type='number'
+                                min="1"
                                 value= {input.life_span_max}
                                 name='life_span_max'
                                 onChange={e => handleChange(e)}>
                                 </input>
                                 {errors.life_span_min && (
-                                <p className="danger">{errors.life_span_min}</p>
+                                <p>{errors.life_span_min}</p>
                                 )}
                                 {errors.life_span_max && (
-                                    <p className="danger">{errors.life_span_max}</p>
+                                    <p>{errors.life_span_max}</p>
                                 )}
                         </div>
                         <div className='divImage'>
@@ -332,7 +227,6 @@ export default function DogCreated() {
                                 <option value={temp.name} key={temp.id}>{temp.name}</option>
                                  ))}
                             </select>
-                                {/* <ul className= 'tempList'><li className='tempItem'>{input.temperament.map((o)=> o + " ,")}</li></ul>  */} 
                         </div>
                         {input.temperament.map(t =>
                             <div className= 'tempList'>
@@ -343,6 +237,16 @@ export default function DogCreated() {
                         <button type='submit' className='btnCreate'>Create!</button>
                     </fieldset>
                 </form>
+            </div>
+            <div className='Footer'>
+                <p>Developed by Mauricio Follonier </p>
+                <a href="https://github.com/mauriciofollonier/">
+                    <VscGithub className='footerIcon'/>
+                </a>
+
+                 <a href="https://www.linkedin.com/in/mauricio-damian-follonier/">
+                    <SiLinkedin className='footerIcon'/>
+                </a>
             </div>
         </div>
     )
