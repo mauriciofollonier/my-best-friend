@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getDogDetail } from '../../Actions/index.js';
+import { VscGithub } from "react-icons/vsc";
+import { SiLinkedin } from "react-icons/si";
 import NavBar from '../Home/NavBar';
 import './DogDetail.css';
 
@@ -22,9 +24,12 @@ export default function DogDetail({ match }) {
      // Si la raza ya existe...
     return (
         <div className='detailDiv'>
-            <NavBar/>
+            <div className="MenuDetail">
+                <a className="Title" href='/home'>apiDogs</a>
+            </div>
             {
                 myDog.length > 0 ?
+                <div className='Main'>
                 <div className="detailBox">
                         <h2 className="detailH2">{myDog[0].name}</h2>
                         <img className="detailImg" src={myDog[0].image} alt="" width="500" height="400"/>
@@ -36,14 +41,19 @@ export default function DogDetail({ match }) {
 
                         <h3 className="detailH3">Weight :{myDog[0].weight[1] ? myDog[0].weight[0] +" to "+ myDog[0].weight[1] : myDog[0].weight[0]} Kgs</h3>
                     </div>
+                </div>
                     : <p>Loading...</p>
             }
+            <div className='Footer'>
+                <p>Developed by Mauricio Follonier </p>
+                <a href="https://github.com/mauriciofollonier/">
+                    <VscGithub className='footerIcon'/>
+                </a>
 
-            {/* <Link to={'/home'}>
-            <button className="btnHomeDetail">
-             <img src="https://images.squarespace-cdn.com/content/v1/5c7e5d208d97406156f3e83d/1557928940983-FCU91IK7IX3YAYM5AWPW/dog-sleeping.png" width="55px" height="45px" alt="x" />
-            </button>
-            </Link> */}
+                 <a href="https://www.linkedin.com/in/mauricio-damian-follonier/">
+                    <SiLinkedin className='footerIcon'/>
+                </a>
+            </div>
         </div>
       )
     }
@@ -51,11 +61,14 @@ export default function DogDetail({ match }) {
     else {
         // Si la raza es creada...
         return (
-            <div>
+            <div className='detailDiv'>
+              <div className="MenuDetail">
+                <a className="Title" href='/home'>apiDogs</a>
+              </div>
                 {
                     myDog.length > 0 ?
-                        <div className="detailDiv">
-    
+                    <div className='Main'>
+                        <div className="detailBox">
                             <h2 className="detailH2">{myDog[0].name}</h2>
                             <img className="detailImg" src={myDog[0].image} alt="" width="500" height="400"/>
                             <h3 className="detailH3">Personality of the Breed :{!myDog[0].createdInDb ? myDog[0].temperament + "  " :
@@ -66,14 +79,19 @@ export default function DogDetail({ match }) {
     
                             <h3 className="detailH3">Weight :{myDog[0].weight?.split("-")[0] + " to " + myDog[0].weight?.split("-")[1]} Kgs</h3>
                         </div>
+                    </div>
                         : <p>Loading...</p>
                 }
-    
-                {/* <Link to={'/home'}>
-                <button className="btnHomeDetail">
-                 <img src="https://images.squarespace-cdn.com/content/v1/5c7e5d208d97406156f3e83d/1557928940983-FCU91IK7IX3YAYM5AWPW/dog-sleeping.png" width="55px" height="45px" alt="x" />
-                </button>
-                </Link> */}
+                 <div className='Footer'>
+                <p>Developed by Mauricio Follonier </p>
+                <a href="https://github.com/mauriciofollonier/">
+                    <VscGithub className='footerIcon'/>
+                </a>
+
+                 <a href="https://www.linkedin.com/in/mauricio-damian-follonier/">
+                    <SiLinkedin className='footerIcon'/>
+                </a>
+                </div>
             </div>
           )
         }

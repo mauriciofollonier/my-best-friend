@@ -156,7 +156,7 @@ console.log("Entre a la ruta del get")
 /********************** [ ] GET /dogs/:id***: ***************/
 
 router.get('/:id', async (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
     try {
         if (id) {
             console.log(id.length)
@@ -178,6 +178,7 @@ router.get('/:id', async (req, res) => {
                 // que recibo por params.
                 let targetBreedId = allApiDogs.filter(d => d.id == id);
                 //console.log(targetBreedId)
+            
                 targetBreedId ? 
 
                 res.json(targetBreedId).sendStatus(200) :
@@ -208,7 +209,7 @@ router.get('/:id', async (req, res) => {
         }
     }
     catch (err) {
-        res.sendStatus(404)
+        res.sendStatus(404);
     }
 
 })
