@@ -14,6 +14,7 @@ import Card from '../Card/Card';
 import Pagination from './Pagination/Pagination';
 import NavBar from '../Home/NavBar';
 import './Home.css';
+import { BsGearWideConnected } from 'react-icons/bs';
 
 
 export default function Home() {
@@ -129,27 +130,34 @@ function handleOrderByWeight(e){
              {/*    ******** Paginado *******    */}
              {/*   Pasamos los valores de las props    */}
             
-            <div>
-        
-            <div className="dogsContainer">
-                { currentDog?.map((dog) => {
-                  return (
+                { 
+                  currentDog.length > 0 ?
+            <div className = "MainHome">
+                <div className="dogsContainer">
+                  {currentDog?.map((dog) => {
+                    return (
                     <div className='dogDiv' key={dog.id}>
                             <Card id={dog.id} name={dog.name} image={dog.image} temperament={dog.temperament} temperaments={dog.temperaments} weight={Array.isArray(dog.weight) ? dog.weight : dog.weight.split("-")}/>
                         <Link to={'/home/' + dog.id}>
                             <button>See More</button>
                         </Link>
                     </div>
-                  )
-                  })
-                }
-            </div>
-            <Pagination 
-             dogsPerPage = {dogsPerPage}
-             allDogs = {allDogs.length-1}
-             pagination = {pagination}
-             />
-            </div>
+                    )
+                }) }
+                </div>
+                 <Pagination 
+                     dogsPerPage = {dogsPerPage}
+                     allDogs = {allDogs.length-1}
+                     pagination = {pagination}
+                 />
+             </div>            
+                   : 
+                  <div className='MainHomePreload'>
+                   <div className="dogsContainerPreload">
+                    <div className='preloaderHome'></div>
+                   </div>
+                  </div>
+                    }
             <div className='Footer'>
                 <p>Developed by Mauricio Follonier </p>
                 <a href="https://github.com/mauriciofollonier/">

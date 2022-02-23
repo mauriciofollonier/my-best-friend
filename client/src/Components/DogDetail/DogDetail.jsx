@@ -42,7 +42,9 @@ export default function DogDetail({ match }) {
                         <h3 className="detailH3">Weight :{myDog[0].weight[1] ? myDog[0].weight[0] +" to "+ myDog[0].weight[1] : myDog[0].weight[0]} Kgs</h3>
                     </div>
                 </div>
-                    : <p>Loading...</p>
+                    : <div className='Main'>
+                        <div className='preloader'></div>
+                    </div>
             }
             <div className='Footer'>
                 <p>Developed by Mauricio Follonier </p>
@@ -80,7 +82,9 @@ export default function DogDetail({ match }) {
                             <h3 className="detailH3">Weight :{myDog[0].weight?.split("-")[0] + " to " + myDog[0].weight?.split("-")[1]} Kgs</h3>
                         </div>
                     </div>
-                        : <p>Loading...</p>
+                        : <div className='Main'>
+                            <div className='preloader'></div>
+                        </div>
                 }
                  <div className='Footer'>
                 <p>Developed by Mauricio Follonier </p>

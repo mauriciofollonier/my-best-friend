@@ -82,3 +82,26 @@ padding: 12px;
     height: 35px;
     width: 35px;
 }
+.preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border: 10px solid var(--color-azul-oscuro);
+    border-top: 10px solid var(--color-celeste);;
+    border-radius: 50%;
+    animation-name: girar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-color: transparent;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

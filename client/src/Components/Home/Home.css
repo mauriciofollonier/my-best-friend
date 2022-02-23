@@ -72,15 +72,29 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-.dogsContainer{
+.MainHome {
     grid-area: main;
+    justify-content: center;
+    align-items: center;
+}
+.MainHomePreload {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dogsContainer{
     font-family: 'Amatic SC', cursive;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-gap: 100px;
-    padding: 0px 10px;
-    padding-left: 179px;
+    grid-gap: 80px;
+    justify-content: space-evenly;
+}
+.dogsContainerPreload {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .dogDiv{
@@ -212,3 +226,26 @@
     height: 35px;
     width: 35px;
 }
+.preloaderHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border: 10px solid var(--color-azul-oscuro);
+    border-top: 10px solid var(--color-celeste);;
+    border-radius: 50%;
+    animation-name: girar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-color: transparent;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
