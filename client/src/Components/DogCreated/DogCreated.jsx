@@ -2,10 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postDog, getTemperaments } from '../../Actions/index';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { VscGithub } from "react-icons/vsc";
 import { SiLinkedin } from "react-icons/si";
-import NavBar from '../Home/NavBar';
+import { SiDatadog } from "react-icons/si";
 import './DogCreated.css';
 
 function validate(input) {
@@ -106,9 +106,12 @@ export default function DogCreated() {
 
     return (
         <div className='createBreedDiv'>
-            {/* <NavBar/> */}
+           
             <div className="MenuCreate">
-                    <a className="Title" href='/home'>apiDogs</a>
+                <a className="Title" href='/home'>
+                   <SiDatadog/>
+                   <h1>MyBestFriend</h1>
+                </a>
                 </div>
             <div className="divForm">         
                 <form onSubmit={e => handleSubmit(e)}>

@@ -82,6 +82,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: blur(25%) opacity(.6);
 }
 .dogsContainer{
     font-family: 'Amatic SC', cursive;
@@ -110,7 +111,12 @@
     height: 450px;
     margin: 10px 0;
     width: 290px;
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.596);
+    transition-duration: .6s;
+}
+.dogDiv:hover {
+    transform: scale(1.15);
 }
 
 .dogDiv h3 {
@@ -197,13 +203,23 @@
     border: 2px solid var(--color-naranja-dorado);;
 }
 
-.Title{
+.Title {
     display: flex;
-    font-size: 55px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow: hidden;
     text-decoration: none;
-    font-family: 'Shizuru', cursive;
-    color: var(--color-naranja-dorado);;
-    border-color: white;
+}
+.Title h1 {
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Dancing Script', cursive;
+    color: var(--color-celeste);
+}
+.Title svg {
+    font-size: 85px;
+    color: var(--color-celeste);
+
 }
 .Footer {
     background-color: black;

@@ -1,19 +1,44 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import { SiDatadog } from "react-icons/si";
+import { FaSitemap } from "react-icons/fa";
+import { GiSittingDog } from "react-icons/gi";
 import './LandingPage.css';
+import dogVideo from './video/dogVideo.mp4'
 
 export default function LandingPage() {
     return (
         <div className='greatDiv'>
+            <div className='mainLandingDiv'>
+            
+                <video 
+                src={dogVideo}
+                type="video/mp4"
+                autoPlay
+                muted
+                loop
+                >
+                </video>
+            
+                <div className='logoLanding'>
+                    <a className="landingTitle" href='/home'>
+                    <SiDatadog/>
+                    <h1>MyBestFriend</h1>
+                    </a>
+                </div>
 
-            <h1 className="welcome">Welcome</h1>
-
-        <div className="enterDiv">
-            <h3 className="getin">Get In!</h3>
-            <NavLink to="/home" ><img className="logo" src="https://image.flaticon.com/icons/png/512/3905/3905057.png" alt="logo" /></NavLink>
-        </div>
-
-
+            </div>
+            <div className='sectionIIDiv'>
+                <ul className='callerLanding'>
+                    <li>
+                        <FaSitemap/>
+                        Know all info about existing Dogs Breeds
+                    </li>
+                    <li>
+                        <GiSittingDog/>
+                        Create your own Breed
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }

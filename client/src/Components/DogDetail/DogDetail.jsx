@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getDogDetail } from '../../Actions/index.js';
 import { VscGithub } from "react-icons/vsc";
 import { SiLinkedin } from "react-icons/si";
-import NavBar from '../Home/NavBar';
+import { SiDatadog } from "react-icons/si";
 import './DogDetail.css';
 
 
@@ -25,7 +24,10 @@ export default function DogDetail({ match }) {
     return (
         <div className='detailDiv'>
             <div className="MenuDetail">
-                <a className="Title" href='/home'>apiDogs</a>
+                <a className="Title" href='/home'>
+                   <SiDatadog/>
+                   <h1>MyBestFriend</h1>
+                </a>
             </div>
             {
                 myDog.length > 0 ?
@@ -65,7 +67,10 @@ export default function DogDetail({ match }) {
         return (
             <div className='detailDiv'>
               <div className="MenuDetail">
-                <a className="Title" href='/home'>apiDogs</a>
+              <a className="Title" href='/home'>
+                   <SiDatadog/>
+                   <h1>MyBestFriend</h1>
+                </a>
               </div>
                 {
                     myDog.length > 0 ?
