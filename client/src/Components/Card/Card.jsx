@@ -3,30 +3,36 @@ import './Card.css';
 
 // Como le pasamos: name, image por 'props' no necesito traerme ningun
 // estado porque ya tengo la logica en el componente HOME.
-export default function Card ({id , name, image, temperament, temperaments, weight}) {
+export default function Card ({id , name, image, temperament, temperaments, weight, weight_min, weight_max}) {
 
   
   return (
-      <div>
+      <div className='cardContain'>
           <h3>{name}</h3>
 
           <img className='dogImg' src={image} alt="img not found"/>
           <hr />
-          <h4>{ temperament ? 
+          { temperament ? 
           <ul>
           {temperament.map((temp, id) => (
             <li key={id}>{temp}</li>
           ))} 
-          </ul> :
+          </ul> 
+          :
           <ul>
           {temperaments?.map((t, id) =>
             <li key={id}>{t.name}</li>
           )} 
           </ul>
            }
-
-          </h4>
-          <h4>{weight[1] ? + weight[0] + " to " + weight[1] + "Kgs": weight[0] + "Kgs"} </h4>
+           {
+             !weight_min ?
+             <h4>{weight[1] ? weight[0] + " - " + weight[1] + " Kgs": weight[0] + " Kgs"}</h4>
+             :
+             <h4>{weight_max ? weight_min + " - " + weight_max + " Kgs": weight_min + " Kgs"}</h4>
+            }
+          
+          
           
         
       </div>

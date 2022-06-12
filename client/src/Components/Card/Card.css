@@ -1,11 +1,61 @@
+.dogDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    border: 3px solid var(--color-naranja-dorado);
+    border-radius: 15px;
+    padding: 15px 10px;
+    box-sizing: content-box;
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.596);
+    transition-duration: .7s;
+}
+.dogDiv:hover {
+    transform: scale(1.05);
+    border-color: lawngreen;
+    background-color: rgba(0, 0, 0, 0.904);
+}
+.dogDiv hr {
+    width: 90%;
+    border-color: var(--color-naranja-dorado);
+}
+.dogDiv:hover hr {
+    width: 98%;
+    border-color: var(--color-celeste);
+}
+.dogDiv h3 {
+    height: 10%;
+    color: var(--color-celeste);
+    font-family: monospace;
+    font-size: 18px;
+}
+.dogDiv a {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    color: rgb(10, 0, 66);
+}
+.cardContain {
+    height: 100%;
+    width: 100%;
+    color: white;
+}
 .dogImg{
     margin: 5px 0;
     border-radius: 10px;
-    width: auto;
-    max-width: 90%;
-    max-height: 180px;
-  
+    width: 90%;
+    height: 130px;
 } 
-ul{
+.cardContain ul {
     margin-bottom: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+.cardContain h4 {
+    margin-bottom: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
 }

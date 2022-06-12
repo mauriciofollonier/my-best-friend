@@ -64,7 +64,7 @@
                          "filters"
                          "main"
                          "footer";
-    background-image: linear-gradient(-225deg, #7085b634 0%, #87a6d94f 0%, #ffffff3d 0%), url('https://images.hdqwalls.com/wallpapers/orange-lines-abstract-pattern-4k-hn.jpg');
+    background-image: linear-gradient( #ffffff 0%, #0000000e 0%), url('https://i.pinimg.com/originals/1e/ef/c5/1eefc5567dc5c55f67ef6849b9235582.jpg');
     min-height: 100vh;
     min-width: 100vw;
     background-position: center;
@@ -87,9 +87,12 @@
 .dogsContainer{
     font-family: 'Amatic SC', cursive;
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 80px;
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(4, auto);
+    grid-gap: 0px 0px;
     justify-content: space-evenly;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .dogsContainerPreload {
     height: 100%;
@@ -97,61 +100,6 @@
     align-items: center;
     display: flex;
 }
-
-.dogDiv{
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    overflow: hidden;
-    border: 3px solid var(--color-naranja-dorado);
-    border-radius: 15px;
-    padding: 15px 10px;
-    height: 450px;
-    margin: 10px 0;
-    width: 290px;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.596);
-    transition-duration: .6s;
-}
-.dogDiv:hover {
-    transform: scale(1.15);
-}
-
-.dogDiv h3 {
-    font-family: monospace;
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.dogDiv button{
-    font-family: 'Amatic SC', cursive;
-    cursor: pointer;
-    font-size: 15px;
-    text-align: center;
-    margin: 5px;
-    background: var(--color-azul-oscuro);;
-    color: var(--color-celeste);
-    height: 50px;
-    width: 70px;
-    box-shadow: transparent;
-    border-radius: 15px;
-    border: 1px solid rgb(6, 1, 85);
-}
-
-.dogDiv button:hover{
-    border: 3px solid red;
-    background-color: white;
-    color: red;
-}
-
-.dogDiv a{
-    text-decoration: none;
-    color: rgb(10, 0, 66);
-    font-weight: bold;
-}
-
 .linkCreate {
     border: solid var(--color-naranja-dorado);; 
     border-radius: 15px;
@@ -208,6 +156,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     overflow: hidden;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
 }
 .Title h1 {

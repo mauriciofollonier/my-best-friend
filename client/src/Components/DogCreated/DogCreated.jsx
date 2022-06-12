@@ -79,9 +79,12 @@ export default function DogCreated() {
         e.preventDefault()
         const newDogCreated = {
             name: input.name,
-            height: `${input.height_min} - ${input.height_max}`,
-            weight: `${input.weight_min} - ${input.weight_max}`,
-            life_span: `${input.life_span_min} - ${input.life_span_max}`,
+            height_min: input.height_min,
+            height_max: input.height_max,
+            weight_min: input.weight_min,
+            weight_max: input.weight_max,
+            life_span_min: input.life_span_min,
+            life_span_max: input.life_span_max,
             image: input.image,
             temperament: input.temperament
         }
@@ -101,7 +104,7 @@ export default function DogCreated() {
 
     useEffect(() => {
         dispatch(getTemperaments())
-    }, []);
+    }, [dispatch]);
 
 
     return (
@@ -110,11 +113,12 @@ export default function DogCreated() {
             <div className="MenuCreate">
                 <a className="Title" href='/home'>
                    <SiDatadog/>
-                   <h1>MyBestFriend</h1>
+                   <h1>GoBack</h1>
                 </a>
+                <h3 className="createTitle">Create a new breed</h3>
                 </div>
             <div className="divForm">         
-                <form onSubmit={e => handleSubmit(e)}>
+                <form onSubmit={handleSubmit}>
                     <fieldset id="form">
                         <legend>Breed</legend>
                         <div className='divName'>
@@ -225,14 +229,14 @@ export default function DogCreated() {
                                 <label className="labelTemp">Temperament</label>
                                 <hr/>
                             <select onChange={(e) => handleSelect(e)} className="selectTemperament">
-                                <option disabled selected>Choose Temperament</option>
+                                <option disabled/*  selected */>Choose Temperament</option>
                                 {temperaments.map((temp) => (
                                 <option value={temp.name} key={temp.id}>{temp.name}</option>
                                  ))}
                             </select>
                         </div>
                         {input.temperament.map(t =>
-                            <div className= 'tempList'>
+                            <div className= 'tempList' key={t}>
                                 <p className='tempItem'>{t}</p>
                                 <button className="buttonX" onClick={(() => handleDelete(t))}>X</button>
                             </div>

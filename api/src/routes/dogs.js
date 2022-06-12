@@ -59,53 +59,10 @@ console.log("Entre a la ruta del get")
         // Devuelvo los resultados.
         res.send(result).status(200)       
   
-    } catch (err) {
-       res.sendStatus(404).send("Breed not found")
-    }
-     }
-    // Nombre de raza a encontrar.
-    /* if (name) { // Si me pasan un nombre...
-        try { 
-            console.log(name)
-        // 1.- Busco si ese nombre esta en la BdD.
-        let dogsBreedByNameBdD = await Dog.findAll({
-            include:{
-                model: Temperament,
-                attributes: ["name"],
-                through: {
-                    attributes: [],
-                  },
-            },
-        })
-        // 2.- Sino busco ese nombre en la Api.
-        let dogsApi = await axios.get('https://api.thedogapi.com/v1/breeds');
-        let dogsBreedByNameAPI = dogsApi.data.map(d => {
-            
-            return { 
-                id: d.id, 
-                name: d.name, 
-                height: splitByScript(d.height.metric), 
-                weight: splitByScript(d.weight.metric), 
-                life_span: splitByScript(d.life_span),
-                image:d.image.url,
-                temperament: splitByColon(d.temperament)
-            } 
-          
-        })
-        // Filtro de todas las razas las que coincidan con el nombre pasado por query.
-        dogsBreedByNameAPI = dogsBreedByNameAPI.filter(d =>  
-            d.name.toLowerCase().includes(
-            name.toLocaleLowerCase())
-            )
-        //console.log(dogsBreedByNameAPI)
-        res.json(dogsBreedByNameAPI)
-        
-        
-      
-    } catch (err) {
-       res.sendStatus(404).send("Breed not found")
-    }
-     } */ else { // Si no pasan un nombre, traeme todo.
+        } catch (err) {
+            res.sendStatus(404).send("Breed not found")
+        }
+    } else { // Si no pasan un nombre, traeme todo.
         // API
         
         try {
@@ -132,17 +89,6 @@ console.log("Entre a la ruta del get")
             }
         }) 
         console.log("Entre a get/dogs sin nombre: " + allDbDogs)
-        /* allDbDogs = allDbDogs.map((d => {
-            return { 
-                id: d.id, 
-                name: d.name, 
-                height: d.height, 
-                weight: d.weight, 
-                life_span: d.life_span,
-                image:d.image,
-                temperament: d.temperament
-            }
-        })) */
         console.log("Esto es allDbDogs: " + allDbDogs)
 
         let allDogs = allApiDogs.concat(allDbDogs)
@@ -177,12 +123,12 @@ router.get('/:id', async (req, res) => {
                 // Filtro de todos los perros los que coincidan con el id
                 // que recibo por params.
                 let targetBreedId = allApiDogs.filter(d => d.id == id);
-                //console.log(targetBreedId)
+              
             
                 targetBreedId ? 
 
                 res.json(targetBreedId).sendStatus(200) :
-
+                
                 res.sendStatus(404)
             } else {
                 let targetDog;
@@ -195,9 +141,12 @@ router.get('/:id', async (req, res) => {
                     return (
                         [{id: d.id, 
                         name: d.name, 
-                        height: d.height, 
-                        weight: d.weight, 
-                        life_span: d.life_span,
+                        height_min: d.height_min,
+                        height_max: d.height_max,
+                        weight_min: weight_min,
+                        weight_max: weight_max,
+                        life_span_min: life_span_min,
+                        life_span_max: life_span_max,
                         image:d.image,
                         temperament: d.temperaments.map(t=>t.name)}]
                     )
@@ -209,6 +158,7 @@ router.get('/:id', async (req, res) => {
         }
     }
     catch (err) {
+       
         res.sendStatus(404);
     }
 

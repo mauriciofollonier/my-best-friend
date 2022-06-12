@@ -1,17 +1,16 @@
 .detailDiv{
 display: grid;
-grid-template-rows: 100px 1fr 80px;
+grid-template-rows: 68px 1fr 80px;
 grid-template-columns: 1fr;
 grid-template-areas: "header"
                      "main"
                      "footer";
- background-image: linear-gradient(-225deg, #7085b634 0%, #87a6d94f 0%, #ffffff3d 0%), url('https://images.hdqwalls.com/wallpapers/orange-lines-abstract-pattern-4k-hn.jpg');
- min-height: 100vh;
- width: 100%;
- background-position: center;
- background-attachment: fixed;
- background-repeat: no-repeat;
- background-size: cover;
+background-image: linear-gradient( #ffffff 0%, #0000000e 0%), url('https://i.pinimg.com/originals/1e/ef/c5/1eefc5567dc5c55f67ef6849b9235582.jpg');
+width: 100%;
+background-position: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
 }
 .MenuDetail {
 grid-area: header;
@@ -20,46 +19,56 @@ justify-content: flex-start;
 background-color: black;
 text-align: center;
 color: white;
-padding: 12px;
-}
-.detailBox {
- display: flex;
- flex-direction: column;
- width: max-content;
- height: max-content;
- overflow: hidden;
- border: 5px solid black;
- border-radius: 9px;
- padding: 10px;
- background-color: rgba(0, 0, 0, 0.692);
+padding: 8px;
 }
 .Main {
- grid-area: main;
- display: flex;
- justify-content: center;
- align-items: center;
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-.detailH2{
- font-size: 45px;
- text-shadow: 5px 5px 5px var(--color-naranja-dorado);
- color:rgb(255, 255, 255);
- margin-top: 20px;
- margin-bottom: 25px;
+.detailBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-sizing: content-box;
+  margin: 9px;
+  overflow: hidden;
+  border: 3px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.712);
 }
-
-.detailH3{
-    color:rgb(255, 255, 255);
-    font-size: 19px;
-    margin-bottom: 3px;
+.breedName {
+  color: var(--color-celeste);
+  font-family: 'Dancing Script', cursive;
+  font-size: 33px;
+  font-weight: bold;
+  padding: 15px;
+  color: lawngreen;
 }
-
 .detailImg{
-    border-radius: 45px;
-    color:rgb(255, 255, 255);
-    max-width:'500px';
-    max-height:'400px';
-    margin-bottom: 20px;
+  border-radius: 2px;
+  color: rgb(255, 255, 255);
+}
+.divInfo {
+  width: 500px;
+}
+table {
+  width: 100%;
+  text-align: left;
+}
+th, td {
+  padding: 8px;
+}
+.detailName {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: var(--color-celeste);
 }
 .Footer {
     background-color: black;
@@ -82,10 +91,7 @@ padding: 12px;
     height: 35px;
     width: 35px;
 }
-.preloader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.preloaderDetail {
     width: 100px;
     height: 100px;
     border: 10px solid var(--color-azul-oscuro);

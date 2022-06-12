@@ -8,9 +8,12 @@ const router = Router();
 
 router.post('/', async (req,res) => {
     const {name,
-           height,
-           weight,
-           life_span,
+           height_min,
+           height_max,
+           weight_min,
+           weight_max,
+           life_span_min,
+           life_span_max,
            image,
            createdInDb,
            temperament
@@ -19,9 +22,12 @@ router.post('/', async (req,res) => {
 try {
     let dogCreated = await Dog.create ({
             name,
-            height,
-            weight,
-            life_span,
+            height_min,
+            height_max,
+            weight_min,
+            weight_max,
+            life_span_min,
+            life_span_max,
             image,
             createdInDb
             

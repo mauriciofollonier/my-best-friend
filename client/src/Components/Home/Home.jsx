@@ -14,7 +14,7 @@ import Card from '../Card/Card';
 import Pagination from './Pagination/Pagination';
 import NavBar from '../Home/NavBar';
 import './Home.css';
-import { BsGearWideConnected } from 'react-icons/bs';
+
 
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
  
  const [  order, setOrder] = useState('');
  const [currentPage   ,   setCurrentPage   ] = useState(1); 
- const [dogsPerPage,  setDogsPerPage] = useState(9);
+ const [dogsPerPage,  setDogsPerPage] = useState(12);
  const indexOfLastDog = currentPage * dogsPerPage;
  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
  const currentDog = allDogs.slice(indexOfFirstDog,indexOfLastDog);
@@ -135,11 +135,10 @@ function handleOrderByWeight(e){
             <div className = "MainHome">
                 <div className="dogsContainer">
                   {currentDog?.map((dog) => {
-                    return (
-                    <div className='dogDiv' key={dog.id}>
-                            <Card id={dog.id} name={dog.name} image={dog.image} temperament={dog.temperament} temperaments={dog.temperaments} weight={Array.isArray(dog.weight) ? dog.weight : dog.weight.split("-")}/>
+                      return (
+                          <div className='dogDiv' key={dog.id}>
                         <Link to={'/home/' + dog.id}>
-                            <button>See More</button>
+                            <Card id={dog.id} name={dog.name} image={dog.image} temperament={dog.temperament} temperaments={dog.temperaments} weight={Array.isArray(dog.weight) ? dog.weight : dog.weight?.split("-")} weight_min={dog.weight_min} weight_max={dog.weight_max}/>
                         </Link>
                     </div>
                     )
@@ -150,7 +149,7 @@ function handleOrderByWeight(e){
                      allDogs = {allDogs.length-1}
                      pagination = {pagination}
                  />
-             </div>            
+                </div>            
                    : 
                   <div className='MainHomePreload'>
                    <div className="dogsContainerPreload">

@@ -8,7 +8,7 @@ export default function NavBar() {
 var click = 1;
 
 function deployFilters(){    
-            if(click==1){
+            if(click===1){
             document.querySelector('.Filters').style.display = "flex";
             click = click + 1;
             } else {
@@ -25,7 +25,7 @@ return (
                 </a>
                 <ul>
                     <li className='Sbar'><SearchBar/></li>                   
-                    <a  className='AdS'onClick={(e) => deployFilters(e)}>Advanced Search</a>
+                    <a className='AdS'onClick={(e) => deployFilters(e)}>Advanced Search</a>
                     <li className='btnC'><Link to='/newDog'>CREATE</Link></li>
                     <li className='btnA'><Link to="">ABOUT</Link></li>
                 </ul>

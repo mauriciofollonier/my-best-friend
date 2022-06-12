@@ -27,15 +27,32 @@ export function getTemperaments () {
 }
 
 export function postDog (payload) {
-    return async function (dispatch) {
+    console.log(payload)
+    return async function () {
     // Le pasamos la ruta del back para que me traiga todos los dogs.
+    try {
         var response = await axios.post('/dog', payload);
-        console.log(response)
-        return response;
+        console.log(response.data)
+        /* return response; */
+    }
+    catch (error) {
+        console.log(error);
+    }
     }
 }
 
-
+/* export function postActivity(input) {
+  // console.log("SOY INPUT EN ACTION POST:", input);
+  return async function () {
+    try {
+      let res = await axios.post("/activity", input);
+      // console.log("SOY res.data EN postActivity:", res.data);
+      if (res) alert(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+} */
 
 // Filtrar por temperament.
 // El payload va a ser el estado que me va a llegar.

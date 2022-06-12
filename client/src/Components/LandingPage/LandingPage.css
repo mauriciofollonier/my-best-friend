@@ -3,33 +3,13 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    /* margin: 0;
-    font-size: 1rem;
-    overflow-x: hidden;
-    height: 100%;
-    width: 100%;
-    background-image: url('https://wallpapercave.com/wp/wp3754289.jpg');
-    background-position: center center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: fixed; */
 }
 
 .mainLandingDiv {
-    flex-grow:4;
+    flex-grow:15;
     background-color: rgba(0, 0, 0, 0.753);
 }
-/* .video-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 50%;
-    top:50%;
-    object-fit: cover;
-    transform: translate(-50%,-50%);
-    z-index: -1;
-} */
+
 video {
     position: absolute;
     width: 100%;
@@ -46,29 +26,13 @@ video {
     background-color: rgba(0, 0, 0, 0.945);
 }
 .logoLanding {
-    z-index: 4;
-    padding-top: 70px;
-    transition-duration: 1s;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    height: max-content;
-    border-radius: 100%;
-    z-index: 4;
-    padding-top: 70px;
-    padding-bottom: 20px; */
-}
-.logoLanding:hover {
     display: flex;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    height: max-content;
-    border-radius: 100%;
     z-index: 4;
-    padding-top: 70px;
-    padding-bottom: 20px;
+    transition-duration: 1s;
 }
-
 .landingTitle {
     transition-duration: .1s;
     text-decoration: none;
@@ -80,18 +44,18 @@ video {
     padding: 22px;
 }
 .landingTitle h1 {
-    font-size: 35px;
+    font-size: 25px;
     text-decoration: none;
     font-family: 'Dancing Script', cursive;
     color: var(--color-celeste);
 }
 .landingTitle svg {
-    font-size: 100px;
+    font-size: 90px;
     color: var(--color-celeste);
 }
 .callerLanding {
     margin-top: 35px;
-    font-size: 35px;
+    font-size: 25px;
 }
 .callerLanding li {
     padding: 15px;
