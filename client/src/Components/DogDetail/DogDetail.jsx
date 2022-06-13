@@ -40,7 +40,7 @@ export default function DogDetail({ match }) {
                             <thead>
                                 <tr>
                                     <td className='detailName'>Personality</td>
-                                        <td>{!myDog[0].createdInDb ? myDog[0].temperament.join(', ') : myDog[0].temperaments.map(t => t.name)}</td>
+                                        <td>{!myDog[0].createdInDb ? myDog[0].temperament?.join(', ') : myDog[0].temperaments.map(t => t.name)}</td>
                                 </tr>
                                 <tr>
                                     <td className='detailName'>Life span</td><td>{myDog[0].life_span[1] ? myDog[0].life_span[0] +" to "+ myDog[0].life_span[1] + " Years" : myDog[0].life_span[0]}</td>

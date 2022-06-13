@@ -40,6 +40,7 @@
 }
 .btnA {
     flex-grow: 1;
+    visibility: hidden;
 }
 .Menu ul li a {
     color: white;
