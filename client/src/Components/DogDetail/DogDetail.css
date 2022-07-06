@@ -53,6 +53,8 @@ padding: 8px;
   color: lawngreen;
 }
 .detailImg{
+  width: 500px;
+  height: 400px;
   border-radius: 2px;
   color: rgb(255, 255, 255);
 }

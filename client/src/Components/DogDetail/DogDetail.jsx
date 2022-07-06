@@ -34,7 +34,7 @@ export default function DogDetail({ match }) {
                 <div className='Main'>
                 <div className="detailBox">
                     <h2 className="breedName">{myDog[0].name}</h2>
-                    <img className="detailImg" src={myDog[0].image} alt="" width="500" height="400"/>
+                    <img className="detailImg" src={myDog[0].image} alt=""/>
                     <div className="divInfo">
                         <table>
                             <thead>
