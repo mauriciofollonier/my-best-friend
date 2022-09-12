@@ -1,168 +1,95 @@
 const { Router } = require('express');
-const { Op } = require('sequelize');
-const { Dog, Temperament } = require('../db.js');
-const axios = require('axios');
+
 const router = Router();
-const { splitByScript, splitByColon } = require('../tools/tools.js');
+
+const { getBreedsApi, 
+        getBreedsByNameApi,
+        getBreedByIdApi } = require('../helpers/getBreedsApi.js');
+
+const { getBreedsDb, 
+        getBreedsByNameDb, 
+        getBreedByIdDb} = require('../helpers/getBreedsDb.js');
 
 
-/********************** [ ] GET /dogs: ************************/
-/********************** [ ] GET /dogs?name=***: ***************/
 
-router.get('/', async (req, res) => {
-console.log("Entre a la ruta del get")
-    const {name} = req.query;
 
-    if (name) { // Si me pasan un nombre...
+router.get('/', async ( req, res ) => {
+
+    const { name } = req.query;
+
+    if (name) {
+
         try { 
-            console.log(name)
-       
-        // 1.- Traigo todo lo de la BdD.
-        var dogsBreedByNameBdD = await Dog.findAll({
-          include: {
-            model: Temperament,
-              attributes: {
-                include: ['name'], 
-              },
-              through: {
-                attributes:[]
-              }
-          }
-        })
-         // 2.- Traigo todo lo de la API.
-        let dogsApi = await axios.get('https://api.thedogapi.com/v1/breeds');
-        let dogsBreedByNameAPI = dogsApi.data.map(d => {
+
+            // API
+            const breedsByNameApi = await getBreedsByNameApi( name );
+           
+            // DB
+            const breedsByNameDb = await getBreedsByNameDb( name );
             
-            return { 
-                id: d.id, 
-                name: d.name, 
-                height: splitByScript(d.height.metric), 
-                weight: splitByScript(d.weight.metric), 
-                life_span: splitByScript(d.life_span),
-                image:d.image.url,
-                temperament: splitByColon(d.temperament)
-            } 
-          
-        })
-        let allDogsBreedByName = await Promise.all([dogsBreedByNameBdD])
-          .then((results) => {
-            const [dogsBreedsByNameBdD] = results;
-            const response = dogsBreedsByNameBdD.concat(dogsBreedByNameAPI)
-            return response;
-          })
-        // Filtro de todas las razas (allDogsBreedByName) las que coincidan con el nombre pasado por query.
-        let result = []
-        for (let i = 0; i < allDogsBreedByName.length; i++){
-          if(allDogsBreedByName[i].name.toLowerCase().includes(name.toLocaleLowerCase())){
-           result.push(allDogsBreedByName[i])
-          }}
-        // Devuelvo los resultados.
-        res.send(result).status(200)       
+            // All
+            const allBreedsByName = breedsByNameApi.concat( breedsByNameDb );
+
+            allBreedsByName.length >= 1 ? 
+
+            res.status(200).json( allBreedsByName ) :
+
+            res.status(404).json( error + "Breed not found")
+
   
-        } catch (err) {
-            res.sendStatus(404).send("Breed not found")
+        } catch ( error ) {
+
+            res.status(404).json( error + "Breed not found") 
         }
-    } else { // Si no pasan un nombre, traeme todo.
-        // API
-        
-        try {
-        let dogsApi = await axios.get('https://api.thedogapi.com/v1/breeds');
-        let allApiDogs = dogsApi.data.map(d => {
-            return { 
-                id: d.id, 
-                name: d.name, 
-                height: splitByScript(d.height.metric), 
-                weight: splitByScript(d.weight.metric), 
-                life_span: splitByScript(d.life_span),
-                image:d.image.url,
-                temperament: splitByColon(d.temperament)
-            }
-        })
-        // BdD
-        let allDbDogs = await Dog.findAll({
-            include: {
-                model: Temperament,
-                attributes: ['name'],
-                through: {
-                    attributes: [],
-                }
-            }
-        }) 
-        console.log("Entre a get/dogs sin nombre: " + allDbDogs)
-        console.log("Esto es allDbDogs: " + allDbDogs)
-
-        let allDogs = allApiDogs.concat(allDbDogs)
-        res.json(allDogs)
-       } catch (err) {
-       res.sendStatus(404)
-       }
-      }
-    })
-
-/********************** [ ] GET /dogs/:id***: ***************/
-
-router.get('/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        if (id) {
-            console.log(id.length)
-            if (id.length < 4) {
-                let dogsApi = await axios.get('https://api.thedogapi.com/v1/breeds');
-                let allApiDogs = dogsApi.data.map(d => {
-                    return { 
-                        id: d.id, 
-                        name: d.name, 
-                        height: splitByScript(d.height.metric), 
-                        weight: splitByScript(d.weight.metric), 
-                        life_span: splitByScript(d.life_span),
-                        image:d.image.url,
-                        temperament: splitByColon(d.temperament)
-                    }
-                })
-                
-                // Filtro de todos los perros los que coincidan con el id
-                // que recibo por params.
-                let targetBreedId = allApiDogs.filter(d => d.id == id);
-              
-            
-                targetBreedId ? 
-
-                res.json(targetBreedId).sendStatus(200) :
-                
-                res.sendStatus(404)
-            } else {
-                let targetDog;
-                targetDog = await Dog.findOne({
-                    where: {
-                        id: id
-                    },
-                    include: Temperament
-                }).then(d => {
-                    return (
-                        [{id: d.id, 
-                        name: d.name, 
-                        height_min: d.height_min,
-                        height_max: d.height_max,
-                        weight_min: weight_min,
-                        weight_max: weight_max,
-                        life_span_min: life_span_min,
-                        life_span_max: life_span_max,
-                        image:d.image,
-                        temperament: d.temperaments.map(t=>t.name)}]
-                    )
-                })
-                res.json(targetDog).sendStatus(200);
-            }
-        } else {
-            res.sendStatus(400).send('Necessary params is not provided')
-        }
-    }
-    catch (err) {
+    } else {
        
-        res.sendStatus(404);
+        try {
+            
+            // API
+            const breedsApi = await getBreedsApi();
+            
+            // DB
+            const breedsDb = await getBreedsDb();
+           
+            // All
+            const allBreeds = breedsApi.concat( breedsDb );
+
+            res.status(200).json( allBreeds );
+
+        } catch ( error ) {
+
+            console.log( error );
+            
+            res.status(404).json( error );
+        
+        }
+      }
+});
+
+
+router.get('/:id', async ( req, res ) => {
+
+    try {
+        // API
+        const targetBreedApi = await getBreedByIdApi( id );
+
+        
+        // DB
+        const targetBreedDb = await getBreedByIdDb( id );
+
+        // Result
+    
+        targetBreedApi ? res.status(200).json( targetBreedApi  ) : [];
+        targetBreedDb  ? res.status(200).json( targetBreedDb  ) : [];
+
+    } catch ( error ) {
+        
+        console.log( error );
+
+        res.status(404).json( error );
     }
 
-})
+});
 
 
 

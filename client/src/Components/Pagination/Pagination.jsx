@@ -1,8 +1,7 @@
-import React from 'react';
 import './Pagination.css';
 
 
-export default function Pagination ({dogsPerPage, allDogs, pagination}) {
+export const Pagination = ( { dogsPerPage, allDogs, pagination } ) => {
 
   const pageNumbers = []; 
 

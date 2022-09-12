@@ -19,6 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { preloadTemperaments } = require('./src/controllers/temperaments/preloadTemperaments.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
@@ -26,4 +27,5 @@ conn.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`); // eslint-disable-line no-console
   });
+  preloadTemperaments();
 });

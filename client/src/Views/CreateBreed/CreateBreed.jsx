@@ -1,14 +1,13 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postDog, getTemperaments } from '../../Actions/index';
 import { useHistory } from 'react-router-dom';
-import { VscGithub } from "react-icons/vsc";
-import { SiLinkedin } from "react-icons/si";
 import { SiDatadog } from "react-icons/si";
-import './DogCreated.css';
 
-function validate(input) {
+import './CreateBreed.css';
+import { Footer } from '../../Components/Footer/Footer';
+import { postDog, getTemperaments } from '../../Actions/index';
+
+const validate = ( input ) => {
     let errors = {};
     if (!input.name) {
         errors.name = 'Name is required';
@@ -30,16 +29,17 @@ function validate(input) {
     return errors;
 }
 
-export default function DogCreated() {
-    const dispatch = useDispatch()
+export const CreateBreed = () => {
 
-    const temperaments = useSelector((state) => state.temperaments)
+    const dispatch = useDispatch();
 
-    const history = useHistory()
+    const temperaments = useSelector( state => state.temperaments );
+    
+    const history = useHistory();
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
 
-    const [input, setInput] = useState({ // Le pasamos un objeto con lo que necesita el Post.
+    const [input, setInput] = useState({ 
         name: "",
         height_min: "",
         height_max: "",
@@ -48,35 +48,33 @@ export default function DogCreated() {
         life_span_min: "",
         life_span_max: "",
         image: "",
-        temperament: []  // Tiene que ser un array por si quiero agregar mas de 1 occupation al crear 
-        // el personaje.
-    })             // Estado local. Aca va lo que ingrese en el formulario.
+        temperament: []  
+    });
 
 
-
-    // Esta funcion va a ir modificando de acuerdo a lo que reciba el input.
-    function handleChange(e) {
+    const handleChange = ( e ) => {
         setInput({
             ...input,
             [e.target.name]: e.target.value
-        })
+        });
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
-        }))
-    } // Por cada una de las opciones del menu desplegable [e.target.name]
-    // Le seteo un value, de acuerdo a cual selecciono e.target.value.
+        }));
+    };
 
-    function handleSelect(e) { // Al seleccionar una occupacion de la lista, la setea
-        // dentro del array occupation, sumado a las que ya tenia
+    const handleSelect = ( e ) => { 
+        
         setInput({
             ...input,
             temperament: [...input.temperament, e.target.value]
-        })
-    }
+        });
+    };
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    const handleSubmit = ( e ) => {
+
+        e.preventDefault();
+
         const newDogCreated = {
             name: input.name,
             height_min: input.height_min,
@@ -87,13 +85,16 @@ export default function DogCreated() {
             life_span_max: input.life_span_max,
             image: input.image,
             temperament: input.temperament
-        }
-        dispatch(postDog(newDogCreated))
-        alert('Dog created Successfully!')
-        setInput(input) // Vaciar el formulario
+        };
+
+        dispatch( postDog( newDogCreated ) );
+
+        // alert('Dog created Successfully!');
+
+        setInput( input ) 
 
         history.push('/home')
-    } // Una vez que el perro haya sido creado redirigime a /home atraves del history(useHistory)
+    }
 
     function handleDelete(t) {
         setInput({
@@ -229,15 +230,19 @@ export default function DogCreated() {
                                 <label className="labelTemp">Temperament</label>
                                 <hr/>
                             <select onChange={(e) => handleSelect(e)} className="selectTemperament">
-                                <option disabled/*  selected */>Choose Temperament</option>
-                                {temperaments.map((temp) => (
-                                <option value={temp.name} key={temp.id}>{temp.name}</option>
+
+                                {/* <option disabled selected>Choose Temperament</option> */}
+
+                                { temperaments?.map( ( temp ) => (
+                                
+                                    <option value={ temp } key={ temp }>{ temp }</option>
+
                                  ))}
                             </select>
                         </div>
-                        {input.temperament.map(t =>
-                            <div className= 'tempList' key={t}>
-                                <p className='tempItem'>{t}</p>
+                        { input.temperament.map( t =>
+                            <div className= 'tempList' key={ t }>
+                                <p className='tempItem'>{ t }</p>
                                 <button className="buttonX" onClick={(() => handleDelete(t))}>X</button>
                             </div>
                         )}
@@ -245,16 +250,7 @@ export default function DogCreated() {
                     </fieldset>
                 </form>
             </div>
-            <div className='Footer'>
-                <p>Developed by Mauricio Follonier </p>
-                <a href="https://github.com/mauriciofollonier/">
-                    <VscGithub className='footerIcon'/>
-                </a>
-
-                 <a href="https://www.linkedin.com/in/mauricio-damian-follonier/">
-                    <SiLinkedin className='footerIcon'/>
-                </a>
-            </div>
+            <Footer />
         </div>
     )
 }

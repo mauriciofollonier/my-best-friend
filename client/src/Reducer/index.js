@@ -1,50 +1,77 @@
+import { GET_DOGS, 
+		 GET_TEMPERAMENTS, 
+		 GET_DOGS_BY_NAME, 
+		 GET_DOG_DETAIL, 
+		 POST_DOG,
+		 FILTER_BY_TEMPERAMENT, 
+		 FILTER_CREATED,
+		 ORDER_BY_NAME, 
+		 ORDER_BY_WEIGHT, 
+		 CLEAN_FILTERS } from '../assets/constants';
+
+
 const initialState = {
 	dogs: [], 
-	alldogs: [],
+	dogsfiltered: [],
 	detail: [],
     temperaments: [],
 }
 
 function rootReducer (state = initialState, action) {
-    switch (action.type) {
-		case 'GET_DOGS':
+    switch ( action.type ) {
+
+		case GET_DOGS:
 			return {
 				...state,
 				dogs: action.payload,    
-				alldogs: action.payload 
+				dogsfiltered: action.payload 
 			}
 
-		case 'GET_TEMPERAMENTS':
+		case GET_TEMPERAMENTS:
 			return { 
 				...state,
 				temperaments: action.payload
 			}
 
-		case 'FILTER_BY_TEMPERAMENTS':
-			console.log("Entre al Reducer ",action.payload)
-		 const alldogs = state.alldogs
-		 const temperamentsFiltered = alldogs.filter(el => el.temperament?.includes(action.payload))
-		                
-								
-		console.log("temperamentsFiltered", temperamentsFiltered)
+		case GET_DOGS_BY_NAME:
+				return { 
+					...state,
+					dogs:  action.payload
+				}
+
+		case GET_DOG_DETAIL:
+			return { 
+					...state,
+					detail:  action.payload
+			}
+		case POST_DOG:
+			console.log(state)
+			return { 
+					...state,
+			}
+		
+
+		case FILTER_BY_TEMPERAMENT:
+			
+		 const dogsfiltered = state.dogsfiltered;
+		 const temperamentsFiltered = dogsfiltered.filter(el => el.temperament?.includes(action.payload));
 								
 			return {
 				...state,
 				dogs: temperamentsFiltered
 			}
 
-		case 'FILTER_CREATED':
-		 const createdFilter = action.payload === 'Created' ? state.alldogs.filter(el => el.createdInDb) :
-		 						state.alldogs.filter(el => !el.createdInDb)
+		case FILTER_CREATED:
+		 const createdFilter = action.payload === 'Created' ? 
+		 					   state.dogsfiltered.filter(el => el.createdInDb) :
+		 					   state.dogsfiltered.filter(el => !el.createdInDb);
 
 			return { 
 				...state,
-				dogs:  createdFilter// Si el payload es 'All' devolveme 
-				                                                             //todo(alldogs)
-							 // Si no es 'All' devolve los creados
+				dogs:  createdFilter
 			}
 		
-		case 'ORDER_BY_NAME':										
+		case ORDER_BY_NAME:										
 			const sortedArr = action.payload === 'asc' ?            
 			                        /* Ascendente */              
 			                  state.dogs.sort(function(a,b){ 
@@ -71,7 +98,7 @@ function rootReducer (state = initialState, action) {
 					dogs: sortedArr
 				}
 
-				case 'ORDER_BY_WEIGHT':										
+				case ORDER_BY_WEIGHT:										
 				const sortedArray = action.payload === '+weight' ?            
 										/* + Pesados*/              
 								  state.dogs.sort(function(a,b){ 
@@ -97,24 +124,12 @@ function rootReducer (state = initialState, action) {
 						...state,
 						dogs: sortedArray
 					}
-
-		case 'GET_DOG_BY_NAME':
-				return { 
-					...state,
-					dogs:  action.payload
-				}
-
-		case 'POST_DOG':
-			console.log(state)
-			return { 
-					...state,
-			}
-		
-		case 'GET_DOG_DETAIL':
-			return { 
-					...state,
-					detail:  action.payload
-			}
+				
+				case CLEAN_FILTERS:
+					return { 
+						...state,
+						dogs: state.dogsfiltered
+					}
 
 
 		default: {

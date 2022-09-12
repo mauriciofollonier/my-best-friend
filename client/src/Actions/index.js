@@ -1,119 +1,145 @@
 import axios from 'axios';
 
-export function getDogs() {
-    return async function (dispatch) {
-    // Le pasamos la ruta del back para que me traiga todos los dogs.
+import Swal from 'sweetalert2';
+
+import { GET_DOGS, 
+         GET_TEMPERAMENTS,
+         GET_DOGS_BY_NAME,
+         GET_DOG_DETAIL,
+         FILTER_BY_TEMPERAMENT, 
+         FILTER_CREATED,
+         ORDER_BY_NAME,
+         ORDER_BY_WEIGHT,
+
+         URL_DOGS,
+         URL_DOGS_BY_NAME,
+         URL_DOG_CREATED,
+         URL_DOG_DETAIL,
+         URL_TEMPERAMENTS, 
+         CLEAN_FILTERS } from '../assets/constants';
+
+export const getDogs = () => {
+
+    return async function ( dispatch ) {
     
-        var json = await axios.get('/dogs');
+        const json = await axios.get( URL_DOGS );
         
         return dispatch({
-            type: 'GET_DOGS',
+            type: GET_DOGS,
             payload: json.data
         })
     }
 }
 
-export function getTemperaments () {
-    return async function (dispatch) {
-    // Le pasamos la ruta del back para que me traiga todos los dogs.
-        var json = await axios.get('/temperaments',{
+export const getTemperaments = () => {
 
-        });
+    return async function ( dispatch ) {
+
+        const temperaments = await axios.get( URL_TEMPERAMENTS );
+
         return dispatch({
-            type: 'GET_TEMPERAMENTS',
-            payload: json.data
+            type: GET_TEMPERAMENTS,
+            payload: temperaments.data
         })
     }
 }
 
-export function postDog (payload) {
-    console.log(payload)
+export const postDog = ( payload ) => {
+
     return async function () {
-    // Le pasamos la ruta del back para que me traiga todos los dogs.
-    try {
-        var response = await axios.post('/dog', payload);
-        console.log(response.data)
-        /* return response; */
-    }
-    catch (error) {
-        console.log(error);
-    }
-    }
-}
-
-/* export function postActivity(input) {
-  // console.log("SOY INPUT EN ACTION POST:", input);
-  return async function () {
-    try {
-      let res = await axios.post("/activity", input);
-      // console.log("SOY res.data EN postActivity:", res.data);
-      if (res) alert(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-} */
-
-// Filtrar por temperament.
-// El payload va a ser el estado que me va a llegar.
-export function filterDogsByTemperament(payload) {
-    console.log("Entre a la Action", payload)
-    return {
-        type: 'FILTER_BY_TEMPERAMENTS',
-        payload
-    }
-}
-
-export function filterCreated (payload) {
-    return {
-        type: 'FILTER_CREATED',
-        payload
-    }
-}
-
-
-export function orderByName (payload) {
-    return {
-        type: 'ORDER_BY_NAME',
-        payload
-    }
-}
-
-export function orderByWeight (payload) {
-    return {
-        type: 'ORDER_BY_WEIGHT',
-        payload
-    }
-}
-
-export function getDogDetail(id) {
-    return async function (dispatch) {
+    
         try {
-            var json = await axios.get(`/dogs/${id}`)
+
+            await axios.post( URL_DOG_CREATED, payload );
+            Swal.fire('Success', 'Breed created', 'success' );
+        }
+        catch ( error ) {
+
+            console.log( error );
+            Swal.fire(
+                'Error', 
+                'Some info is incorrect, please check form again', 
+                'error' 
+            );
+        }
+    }
+}
+export const getDogDetail = ( id ) => {
+
+    return async function ( dispatch ) {
+
+        try {
+            const json = await axios.get( URL_DOG_DETAIL + id );
             return dispatch({
-                type: 'GET_DOG_DETAIL',
+                type: GET_DOG_DETAIL,
                 payload: json.data
             })
-        } catch (error) {
-            console.log(error)
+        } catch ( error ) {
+            console.log( error );
+            
         }
     }
 }
 
-export function getDogName (name) {
-// Por payload me va a llegar lo que el usuario ponga en la barra de busqueda
-// (req.query->api->routes->index->router.get('/dogs'))
-// Le pego la ruta y le digo ejecutamela con lo que te estoy pasando como "name"
-   return async function (dispatch) {
+export const getDogsByName = ( name ) => {
+
+    return async function ( dispatch ) {
         try {
-            var json = await axios.get("/dogs?name="+name);
+            const json = await axios.get( URL_DOGS_BY_NAME + name );
+
             return dispatch ({
-                type: 'GET_DOG_BY_NAME',
-                payload: json.data // La respuesta de la promesa guardada en "json"
+                type: GET_DOGS_BY_NAME,
+                payload: json.data
             })
-        } catch (error) {
-          console.log(error)
+        } catch ( error ) {
+            console.log( error );
+            Swal.fire(
+                'Error', 
+                'The breed you are looking for does not exist', 
+                'error' 
+            );
         }
+    }
+}
+
+// Filters
+
+export const filterDogsByTemperament = ( payload ) => {
+
+    return {
+        type: FILTER_BY_TEMPERAMENT,
+        payload
+    }
+}
+
+export const filterCreated = ( payload ) => {
+    return {
+        type: FILTER_CREATED,
+        payload
+    }
+}
+
+
+export const orderByName = ( payload ) => {
+
+    return {
+        type: ORDER_BY_NAME,
+        payload
+    }
+}
+
+export const orderByWeight = ( payload ) => {
+
+    return {
+        type: ORDER_BY_WEIGHT,
+        payload
+    }
+}
+
+export const cleanFilters = () => {
+
+    return {
+        type: CLEAN_FILTERS,
     }
 }
 

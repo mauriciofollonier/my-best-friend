@@ -1,0 +1,21 @@
+.Footer {
+    background-color: black;
+    grid-area: footer;
+}
+.Footer p {
+    flex-wrap: wrap;
+    color: white;
+    font-size: 1em;
+}
+.Footer a {
+    height: max-content;
+    width: max-content;
+    color: white;
+    text-decoration: none;
+}
+.footerIcon {
+    color: white;
+    margin: 5px;
+    height: 35px;
+    width: 35px;
+}

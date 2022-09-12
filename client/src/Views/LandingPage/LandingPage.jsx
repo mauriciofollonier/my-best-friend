@@ -1,11 +1,12 @@
-import React from 'react';
-import { SiDatadog } from "react-icons/si";
-import { FaSitemap } from "react-icons/fa";
-import { GiSittingDog } from "react-icons/gi";
+
+import { SiDatadog } from 'react-icons/si';
+import { FaSitemap } from 'react-icons/fa';
+import { GiSittingDog } from 'react-icons/gi';
 import './LandingPage.css';
 import dogVideo from './video/dogVideo.mp4'
 
-export default function LandingPage() {
+export const LandingPage = () => {
+
     return (
         <div className='greatDiv'>
             <div className='mainLandingDiv'>
@@ -42,5 +43,3 @@ export default function LandingPage() {
         </div>
     )
 }
-
-// https://image.flaticon.com/icons/png/512/3905/3905057.png
