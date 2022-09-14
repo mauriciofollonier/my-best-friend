@@ -39,7 +39,7 @@ router.get('/', async ( req, res ) => {
   
         } catch ( error ) {
 
-            res.status(404).json( error + "Breed not found") 
+            res.status(404).json( error + "Breed n't found") 
         }
     } else {
        
