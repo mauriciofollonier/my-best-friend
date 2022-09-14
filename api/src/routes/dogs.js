@@ -39,7 +39,7 @@ router.get('/', async ( req, res ) => {
   
         } catch ( error ) {
 
-            res.status(404).json( error + "Breed n't found") 
+            res.status(404).json( error + "Breed not found") 
         }
     } else {
        
@@ -68,6 +68,8 @@ router.get('/', async ( req, res ) => {
 
 
 router.get('/:id', async ( req, res ) => {
+
+    const { id } = req.params;
 
     try {
         // API

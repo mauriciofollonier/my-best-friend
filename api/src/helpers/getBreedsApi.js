@@ -68,9 +68,6 @@ const getBreedsByNameApi = async( name = null ) => {
 
 const getBreedByIdApi = async ( id = null ) => {
 
-    console.log("Entre a buscar por id")
-    console.log("El id es " + id )
-
     const apiBreeds = await getBreedsApi();
 
 
