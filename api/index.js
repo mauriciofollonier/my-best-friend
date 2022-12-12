@@ -24,7 +24,7 @@ const { preloadTemperaments } = require('./src/controllers/temperaments/preloadT
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   
-  let PORT = process.env.PORT
+  const PORT = process.env.PORT || 3001;
   
   server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`); // eslint-disable-line no-console
